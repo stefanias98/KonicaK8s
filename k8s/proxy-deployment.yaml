@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: proxy
+  template:
+    metadata:
+      labels:
+        component: proxy
+    spec:
+      containers:
+        - name: proxy
+          image: stefanias98/myproxy
+          ports:
+            - containerPort: 1990
+          env:
+            - name: IP_SERVER
+              value: server-cluster-ip-service
+            - name: PORT_SERVER
+              value: "2000"
+            - name: PORT_PROXY
+              value: "1990"
