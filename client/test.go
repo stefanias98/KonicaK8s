@@ -32,7 +32,7 @@ func firstClient() {
 		log.Fatal("11", err)
 	}
 
-	response, err := http.Post("http://"+os.Getenv("IP_PROXY")+":"+os.Getenv("PORT_PROXY")+"/demo", "application/json", bytes.NewBuffer(dataJSON))
+	response, err := http.Post("http://<proxy IP>:<proxy PORT>/demo", "application/json", bytes.NewBuffer(dataJSON))
 	if err != nil {
 		log.Fatal("12", err)
 	}
@@ -52,7 +52,7 @@ func secondClient() {
 		log.Fatal("21", err)
 	}
 
-	response, err := http.Post("http://"+os.Getenv("IP_PROXY")+":"+os.Getenv("PORT_PROXY")+"/demo2", "application/json", bytes.NewBuffer(dataJSON))
+	response, err := http.Post("http://<proxy IP>:<proxy PORT>/demo2", "application/json", bytes.NewBuffer(dataJSON))
 	if err != nil {
 		log.Fatal("22", err)
 	}
